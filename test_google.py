@@ -12,4 +12,4 @@ def test_google_search(page: Page):
     search_box.press("Enter")
     
     # 3. Assert the result (Verify the title contains our keyword)
-    expect(page).to_have_title(/Playwright Python/)
+    expect(page).to_have_title("Playwright Python")
