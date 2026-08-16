@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import Page, expect
 
 def test_practice_login(page: Page):
-    # 1. Navigate to a stable, automation-friendly practice website
+    # 1. Navigate to the complete URL address
     page.goto("https://herokuapp.com")
     
     # 2. Interact with the form using specific element IDs
