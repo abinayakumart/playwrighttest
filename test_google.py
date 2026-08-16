@@ -1,15 +1,14 @@
 import pytest
 from playwright.sync_api import Page, expect
 
-def test_google_search(page: Page):
-    # 1. Navigate to the website
-    page.goto("https://google.com")
+def test_practice_login(page: Page):
+    # 1. Navigate to a stable, automation-friendly practice website
+    page.goto("https://herokuapp.com")
     
-    # 2. Interact with the page (Handle cookies if prompted, then type)
-    # This searches for the search input box by its title attribute
-    search_box = page.get_by_title("Search")
-    search_box.fill("Playwright Python")
-    search_box.press("Enter")
+    # 2. Interact with the form using specific element IDs
+    page.locator("#username").fill("tomsmith")
+    page.locator("#password").fill("SuperSecretPassword!")
+    page.locator("button[type='submit']").click()
     
-    # 3. Assert the result (Verify the title contains our keyword)
-    expect(page).to_have_title("Playwright Python")
+    # 3. Assert the success banner is visible
+    expect(page.locator("#flash")).to_contain_text("You logged into a secure area!")
