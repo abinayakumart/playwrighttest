@@ -23,4 +23,11 @@ jobs:
         playwright install --with-deps
 
     - name: Execute PyTest
-      run: pytest
+      run: pytest --html=report.html --self-contained-html
+
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-html-report
+        path: report.html
